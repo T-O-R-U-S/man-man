@@ -1,4 +1,6 @@
 ---
+import { Icon } from  'astro-icon';
+
 interface Props {
 	title: string;
 }
@@ -20,32 +22,40 @@ const { title } = Astro.props;
 		<slot />
 	</body>
 </html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
+<style is:global lang="scss">
+	:root, body, html {
+		@apply overflow-x-hidden min-h-screen;
 	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
+
+	body {
+		@apply flex flex-col items-center justify-center;
 	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
+
+	h1,h2,h3,h4,h5,h6 {
+		@apply font-bold;
+	}
+
+	h1 {
+		@apply text-7xl;
+	}
+
+	h2 {
+		@apply text-5xl;
+	}
+
+	h3 {
+		@apply text-3xl;
+	}
+
+	h4 {
+		@apply text-xl;
+	}
+
+	h5 {
+		@apply text-lg;
+	}
+
+	h6 {
+		@apply text-sm;
 	}
 </style>

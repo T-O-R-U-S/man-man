@@ -1,0 +1,9 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import UpNextView from "../../components/up-next-view.svelte";
+import TopBar from '../../components/top-bar.svelte'
+---
+<Layout title="man.man">
+    <TopBar client:load />
+    <UpNextView client:load />
+</Layout>
