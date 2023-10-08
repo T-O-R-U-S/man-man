@@ -1,0 +1,11 @@
+---
+import Layout from './Layout.astro';
+
+let props = Astro.props;
+---
+
+<Layout title={props.title}>
+    <main class="min-h-screen w-screen flex flex-col items-center justify-center">
+        <slot />
+    </main>
+</Layout>

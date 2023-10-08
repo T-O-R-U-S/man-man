@@ -25,8 +25,11 @@
                         </div>
                         Open Complete Schedule
                 </a>
-                <section>
+                <section class="p-4 outline outline-black outline-2 rounded-lg col-span-1 flex items-center justify-center flex-col cursor-pointer">
+                    <div class="bg-slate-600 aspect-square rounded-full flex-1 flex justify-center items-center fill-white">
 
+                    </div>
+                    Turn on Blind Mode
                 </section>
             </div>
         {/if}

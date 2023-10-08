@@ -1,5 +1,15 @@
 ---
+import Layout from "../../layouts/Layout.astro";
+import HospitalView from "../../components/hospital-view.svelte";
+
 if(!Astro.cookies.has("hospital-jwt")) {
     return Astro.redirect("/hospital/login")
 }
 ---
+
+<Layout>
+    <header>
+        <h2 class="bg-blue-200 h-96 flex items-center justify-center">Manage your doctors...</h2>
+    </header>
+    <HospitalView />
+</Layout>

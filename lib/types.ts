@@ -10,3 +10,8 @@ export const Signup = z.object({
     password: z.string(),
     full_name: z.string()
 });
+
+export const HospitalInfo = z.object({
+    hospital_id: z.string(),
+    full_name: z.string()
+})

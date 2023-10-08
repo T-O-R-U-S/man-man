@@ -2,8 +2,8 @@ import type {APIRoute} from "astro";
 
 import {sql} from "../../../../../lib/database.ts";
 
-export const POST: APIRoute = async ({ request, props }) => {
-    let user_uuid = props["verify"];
+export const POST: APIRoute = async ({ request, params }) => {
+    let user_uuid = params["verify"]!;
 
     let result = await sql`
         UPDATE Patient
@@ -11,5 +11,5 @@ export const POST: APIRoute = async ({ request, props }) => {
         WHERE patient_id = ${user_uuid}
     `;
 
-    return new Response("Work in progress :^)", {status:500})
+    return new Response("You've been verified.", {status:200})
 }

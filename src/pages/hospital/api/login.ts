@@ -23,16 +23,12 @@ export const POST: APIRoute = async ({request, cookies, redirect }) => {
         return new Response(JSON.stringify({message: "Incorrect form details"}), {status: 400})
     }
 
-    let query = await sql`SELECT password, name, patient_id, verified FROM Patient WHERE email = ${validation.data.email}`;
+    let query = await sql`SELECT password, name, hospital_id FROM hospital WHERE email = ${validation.data.email}`;
 
     let result = query.pop();
 
     if(!result) {
-        return new Response(JSON.stringify({message: "No user with that email exists."}), {status: 400})
-    }
-
-    if(!result.verified) {
-        return redirect("/patient/account-created")
+        return new Response(JSON.stringify({message: "No hospital with that email exists."}), {status: 400})
     }
 
     let encrypted_password = result.password;
@@ -43,16 +39,14 @@ export const POST: APIRoute = async ({request, cookies, redirect }) => {
         return new Response(JSON.stringify({message: "Incorrect password"}), {status: 403})
     }
 
-    let patient_jwt = jsonwebtoken.sign({
+    let hospital_jwt = jsonwebtoken.sign({
         full_name: result.name,
-        patient_id: result.patient_id
+        hospital_id: result.hospital_id
     }, process.env["ENCRYPTION_SECRET"]!);
 
-    cookies.set("patient-jwt", patient_jwt);
-
     let headers = new Headers({
-        'Set-Cookie': `patient-jwt=${patient_jwt}; Path=/`,
-        'Location':'/patient'
+        'Set-Cookie': `hospital-jwt=${hospital_jwt}; Path=/`,
+        'Location':'/hospital'
     })
 
     return new Response("Successful",{

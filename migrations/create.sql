@@ -4,7 +4,8 @@ CREATE TABLE Hospital(
     hospital_id uuid primary key default uuid_generate_v4(),
     name varchar collate "C" not null unique,
     logo bytea,
-    password char(60) not null
+    password char(60) not null,
+    email varchar not null unique
 );
 
 CREATE TABLE Patient (
@@ -14,7 +15,7 @@ CREATE TABLE Patient (
     phone varchar,
     name varchar,
     profile_picture bytea,
-    verified bool default false
+    verified bool default true
 );
 
 CREATE TABLE Doctor(

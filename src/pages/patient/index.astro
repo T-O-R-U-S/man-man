@@ -1,11 +1,12 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import SearchDoctor from '../../components/search-doctor.svelte'
 
-if(!Astro.cookies.has("patient-jwt")) {
+if(!Astro.cookies.get("patient-jwt")) {
     return Astro.redirect("/patient/login")
 }
 ---
 
 <Layout title="Search for a doctor...">
-
+    <SearchDoctor />
 </Layout>
