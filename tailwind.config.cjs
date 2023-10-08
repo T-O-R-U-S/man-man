@@ -2,9 +2,15 @@
 module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
+		fontFamily: {
+			'sans-serif': [
+				'Open Sans', 'sans-serif'
+			]
+		},
 		extend: {},
 	},
-	plugins: [],
+	plugins: [
+	],
 	// Some colours are dynamically constructed. Tailwind does not like this :^(
 	safelist: [
 		// Straight-up colours
@@ -19,6 +25,7 @@ module.exports = {
 		'from-yellow-400', 'to-yellow-700',
 		'from-purple-400', 'to-purple-700',
 		'from-green-400', 'to-green-700',
+		// Effects
 		'blur'
 	]
 }

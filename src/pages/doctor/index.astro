@@ -1,9 +1,13 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import Layout from "../../layouts/DoctorLayout.astro";
 import UpNextView from "../../components/up-next-view.svelte";
 import TopBar from '../../components/top-bar.svelte'
+
+if(!Astro.cookies.has("doctor-jwt")) {
+    return Astro.redirect("/doctor/login")
+}
 ---
 <Layout title="man.man">
     <TopBar client:load />
-    <UpNextView client:load />
+    <UpNextView client:load class="z-0" />
 </Layout>

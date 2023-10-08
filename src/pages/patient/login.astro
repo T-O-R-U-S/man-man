@@ -1,0 +1,9 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import LoginForm from '../../components/user-login-form.svelte';
+---
+<Layout title="Please log in">
+    <main class="h-screen flex items-center justify-center">
+        <LoginForm client:load />
+    </main>
+</Layout>
