@@ -1,0 +1,47 @@
+---
+import FlexLayout from "../layouts/FlexLayout.astro";
+
+---
+
+<FlexLayout>
+    <main class="h-screen overflow-y-auto overflow-x-hidden w-screen bg-blue-600 space-grotesk text-white cursor-default font-light flex flex-col items-center">
+        <header class="min-h-max bg-emerald-500 flex items-center flex-col text-white w-full justify-center">
+            <h1 class="px-5 py-12 text-center" id="hero">I'm a patient and...</h1>
+            <ul class="text-3xl space-grotesk flex max-lg:flex-wrap h-full justify-between">
+                <li class="bg-emerald-600 list-none p-12 w-full text-center">I've done what we've all done before (looked up my symptoms and panicked)</li>
+                <li class="bg-emerald-700 list-none p-12 w-full text-center">I might not be as informed as a professional doctor, and I might not even know where to start!</li>
+                <li class="bg-emerald-800 list-none p-12 w-full text-center">I might not be satisfied with my prior hospital's diagnosis or results, and want to seek out a new hospital</li>
+            </ul>
+        </header>
+        <h1 class="text-center py-10 bg-sky-700 max-lg:text-justify px-12 font-black w-full">...and I don't have to cope with that anymore.</h1>
+        <ul class="text-3xl space-grotesk flex max-lg:flex-wrap list-none w-full">
+            <li class="bg-sky-600 list-none p-12 w-full text-justify">Our AI-driven search engine can help you search by symptoms to curb panic and stop misinformation from spreading</li>
+            <li class="bg-sky-500 list-none p-12 w-full">Our online process makes it easy to reach out to an informed professional</li>
+            <li class="bg-sky-400 list-none p-12 w-full text-justify">Our quick and easy application process makes it easy to upload your documents once, and apply anywhere! No more hospital lock-in.</li>
+        </ul>
+        <h1 class="font-normal w-fit py-36"><a href="/patient"><b class="underline">Sign up</b> now.</a></h1>
+    </main>
+
+    <style>
+        @keyframes slide-down {
+            from {
+                @apply py-12;
+            }
+
+            to {
+                @apply py-36;
+            }
+        }
+
+        #hero {
+            animation: slide-down 5s forwards;
+            animation-delay: 1s;
+        }
+
+        @media screen and (prefers-reduced-motion) {
+            #hero {
+                animation: none;
+            }
+        }
+    </style>
+</FlexLayout>

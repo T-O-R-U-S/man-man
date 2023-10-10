@@ -1,33 +1,15 @@
 ---
-import Layout from '../layouts/Layout.astro'
+import FlexLayout from "../layouts/FlexLayout.astro";
 ---
-
-<Layout title="man.man">
-    <header class="flex bg-blue-700 flex-wrap items-center justify-center">
-        <div id="hero-text" class="max-w-2xl flex flex-col w-full space-grotesk">
-            <img src="/man_man_logo.svg" alt="man.man logo" class="w-full max-w-lg p-10">
-            <h3 class="font-light py-9 text-white max-w-prose p-2">Because modern medicine was never made to be managed by 20-year-old software.</h3>
+<FlexLayout>
+    <main class="w-full h-screen bg-blue-600 text-white flex items-center justify-center flex-col">
+        <div class="flex flex-wrap">
+            <h1 class="space-grotesk mx-12 my-6 flex-1 min-w-max text-center">I am a...</h1>
+            <nav class="flex flex-col gap-8 space-grotesk my-6 md:mx-12 items-center justify-center flex-1">
+                <a href="/patient-intro"><h1 class="underline underline-offset-4">Patient</h1></a>
+                <a href="/doctor-intro"><h1 class="underline underline-offset-4">Doctor</h1></a>
+            </nav>
         </div>
-        <div class="rounded-lg overflow-clip max-w-lg p-14">
-            <img src="/preview.png" alt="Preview image of Man.Man" class="rounded-lg overflow-clip object-cover h-full">
-        </div>
-    </header>
-
-    <nav class="flex flex-col w-full items-center">
-        <div class="w-full flex items-center justify-center flex-wrap">
-            <a class="mx-5 my-3 outline outline-2 outline-blue-700 p-4 rounded-lg hover:bg-blue-700 hover:text-white transition-all space-grotesk max-md:w-full" href="/patient">I'm <b>looking for a doctor</b></a>
-            <a class="mx-5 my-3 outline outline-2 outline-blue-700 p-4 rounded-lg hover:bg-blue-700 hover:text-white transition-all space-grotesk max-md:w-full" href="/doctor">I <b>am a doctor</b></a>
-        </div>
-        <a class="text-blue-700 underline h-10 flex items-center justify-center fill-blue-700 cursor-pointer space-grotesk w-fit relative" href="/hospital">
-            <span>I'm a hospital</span>
-            <svg class="transition-all" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColour" d="M16.15 13H5q-.425 0-.713-.288T4 12q0-.425.288-.713T5 11h11.15L13.3 8.15q-.3-.3-.288-.7t.288-.7q.3-.3.713-.313t.712.288L19.3 11.3q.15.15.213.325t.062.375q0 .2-.063.375t-.212.325l-4.575 4.575q-.3.3-.712.288t-.713-.313q-.275-.3-.288-.7t.288-.7L16.15 13Z"/></svg>
-        </a>
-    </nav>
-
-
-    <style>
-        a:hover > svg {
-            translate: 1rem;
-        }
-    </style>
-</Layout>
+        <a href="/hospital-intro"><h3 class="space-grotesk underline text-slate-200 absolute bottom-10 -translate-x-1/2">Hospital</h3></a>
+    </main>
+</FlexLayout>
