@@ -26,7 +26,10 @@ export const POST: APIRoute = async ({request}) => {
 
     let encrypted_password = doctor.password;
 
-    let valid_password = await bcrypt.compare(validation.data.password, encrypted_password);
+    let valid_password = await bcrypt.compare(validation.data.password, encrypted_password).catch((err) => {
+        console.error(err)
+        return new Response(JSON.stringify({message: "Forbidden"}), {status: 403})
+    });
 
     if(!valid_password) {
         return new Response(JSON.stringify({message: "Forbidden"}), {status: 403})

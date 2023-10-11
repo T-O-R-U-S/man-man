@@ -11,7 +11,9 @@ export const GET: APIRoute = async ({request, cookies}) => {
 
     let req_data: any = await request.json();
 
-    if (!req_data || !req_data.doctor_id || typeof req_data.doctor_id !== 'string') {
+
+
+    if (!req_data?.doctor_id || typeof req_data.doctor_id !== 'string') {
         return new Response("Bad form", {status: 400})
     }
 

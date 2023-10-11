@@ -16,7 +16,7 @@ pnpm-debug.log*
 # environment variables
 .env.production
 .env*
-!.env.local # .env.local to be used in local testing
+!.env.local # .env.local to be used in local testing. `cp .env.local .env`
 
 # macOS-specific files
 .DS_Store

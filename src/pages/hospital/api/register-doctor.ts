@@ -13,7 +13,12 @@ export const POST: APIRoute = async ({request, redirect, cookies}) => {
     let hospital_validation = HospitalInfo.safeParse(data);
 
     if (!hospital_validation.success) {
-        return new Response("Bad form", {status: http_constants.HTTP_STATUS_BAD_REQUEST})
+        return new Response("Bad jwt", {
+            status: http_constants.HTTP_STATUS_BAD_REQUEST,
+            headers: {
+                'Set-Cookie': 'hospital-jwt=none; Max-Age=-1'
+            }
+        })
     }
 
     let doctor_info = await request.json();
@@ -30,12 +35,14 @@ export const POST: APIRoute = async ({request, redirect, cookies}) => {
         if (err)
             throw err
 
-        // @ts-ignore
+        if(!doctor_validation.success || !hospital_validation.success) {
+            return;
+        }
+
         encrypted_password = await bcrypt.hash(doctor_validation.data.password, salt);
 
-
-        // @ts-ignore
-        await sql`
+        try {
+            await sql`
         INSERT INTO
             doctor(hospital_id, password, email, name)
         VALUES
@@ -44,7 +51,10 @@ export const POST: APIRoute = async ({request, redirect, cookies}) => {
              ${doctor_validation.data.email},
              ${doctor_validation.data.full_name}
             )`;
+        } catch (e) {
+            console.error(e)
+        }
     })
 
-    return redirect("/hospital", 303)
+    return new Response(JSON.stringify({message: "Successfully created new doctor", type:"Success"}), {status: 200})
 }
