@@ -1,0 +1,32 @@
+### Test hospital signup
+POST http://localhost:4321/hospital/api/signup
+Content-Type: application/x-www-form-urlencoded
+
+hospital-name = Prototype Test Hospital &
+email = prototype@email.com &
+password = Password
+
+### Test hospital login
+POST http://localhost:4321/hospital/api/login
+Content-Type: application/x-www-form-urlencoded
+
+email = prototype@email.com &
+password = Password
+
+### Test doctor signup
+POST http://localhost:4321/hospital/api/register-doctor
+Content-Type: application/json
+
+{
+  "full_name":  "Prototype Doctor",
+  "email": "prototype@email.com",
+  "password":  "Password"
+}
+
+### Test login
+
+POST http://localhost:4321/doctor/api/login
+Content-Type: application/x-www-form-urlencoded
+
+email = prototype@email.com &
+password = Password

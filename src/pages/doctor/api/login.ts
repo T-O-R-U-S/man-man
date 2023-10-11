@@ -4,7 +4,7 @@ import {Login} from "../../../../lib/types.ts";
 import bcrypt from "bcrypt";
 import jsonwebtoken from "jsonwebtoken";
 import 'dotenv/config';
-
+pnpm 
 export const POST: APIRoute = async ({request}) => {
     let form_data = await request.formData();
 
@@ -17,7 +17,7 @@ export const POST: APIRoute = async ({request}) => {
     });
 
     if(!validation.success) {
-        return new Response("Bad form", {status: 400})
+        return new Response(JSON.stringify({message: "Bad form"}), {status: 400})
     }
 
     let doctor = await sql`
@@ -29,7 +29,7 @@ export const POST: APIRoute = async ({request}) => {
     let valid_password = await bcrypt.compare(validation.data.password, encrypted_password);
 
     if(!valid_password) {
-        return new Response("Forbidden", {status: 403})
+        return new Response(JSON.stringify({message: "Forbidden"}), {status: 403})
     }
 
     let doctor_jwt = jsonwebtoken.sign({

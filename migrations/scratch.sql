@@ -1,1 +1,1 @@
-UPDATE patient SET verified = true
+SELECT * FROM doctor

@@ -26,16 +26,25 @@ export const POST: APIRoute = async ({request, redirect, cookies}) => {
 
     let encrypted_password: string;
 
-    bcrypt.genSalt((err, salt) => {
+    bcrypt.genSalt(async (err, salt) => {
         if (err)
             throw err
 
         // @ts-ignore
-        encrypted_password = bcrypt.hash(doctor_validation.data.password, salt);
-    })
+        encrypted_password = await bcrypt.hash(doctor_validation.data.password, salt);
 
-    // @ts-ignore
-    await sql`INSERT INTO doctor(hospital_id, password, email, name) VALUES (${hospital_validation.data.hospital_id}, ${encrypted_password}, ${doctor_validation.data.email}, ${doctor_validation.data.full_name})`;
+
+        // @ts-ignore
+        await sql`
+        INSERT INTO
+            doctor(hospital_id, password, email, name)
+        VALUES
+            (${hospital_validation.data.hospital_id},
+             ${encrypted_password},
+             ${doctor_validation.data.email},
+             ${doctor_validation.data.full_name}
+            )`;
+    })
 
     return redirect("/hospital", 303)
 }

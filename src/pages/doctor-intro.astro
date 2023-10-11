@@ -1,0 +1,48 @@
+---
+import FlexLayout from "../layouts/FlexLayout.astro";
+
+---
+
+<FlexLayout>
+    <main class="h-screen overflow-y-auto overflow-x-hidden w-screen bg-pink-600 space-grotesk text-white cursor-default font-light flex flex-col items-center">
+        <header class="min-h-max bg-yellow-500 flex items-center flex-col text-white w-full justify-center">
+            <h1 class="px-5 py-12 text-center" id="hero">I'm a doctor and...</h1>
+            <ul class="text-3xl space-grotesk flex max-lg:flex-wrap h-full justify-between">
+                <li class="bg-yellow-600 list-none p-12 w-full text-justify">My patients are more informed than ever before, but sometimes they may panic by misdiagnosing themselves</li>
+                <li class="bg-yellow-700 list-none p-12 w-full text-justify">I might not have as much agency as I want over which patients to treat and which to decline</li>
+                <li class="bg-yellow-800 list-none p-12 w-full text-justify">My hospital's software is outdated and slows down my productivity</li>
+            </ul>
+        </header>
+        <h1 class="text-center py-10 bg-pink-700 max-lg:text-justify px-12 font-black w-full">...and I don't have to deal with that anymore.</h1>
+        <ul class="text-3xl space-grotesk flex max-lg:flex-wrap list-none w-full">
+            <li class="bg-pink-600 list-none p-12 w-full text-justify">Our application-style process makes it easier than ever to quickly and accurately inform patients and stop panic, freeing up more space to deal with real emergencies.</li>
+            <li class="bg-pink-500 list-none p-12 w-full">Our online process lets you select who to treat, and when to treat them (subject to other patients that your hospital may schedule for you)</li>
+            <li class="bg-pink-400 list-none p-12 w-full text-justify">Our software is fast, streamlined, and lets you see the vital details about your patients before they even walk into the room.</li>
+        </ul>
+        <h1 class="font-normal w-fit pt-36"><a href="/doctor">Treat your patients <b class="underline">better</b>.</a></h1>
+        <h3 class="py-10">Note: your hospital must participate in the program for you to sign up.</h3>
+    </main>
+
+    <style>
+        @keyframes slide-down {
+            from {
+                @apply py-12;
+            }
+
+            to {
+                @apply py-36;
+            }
+        }
+
+        #hero {
+            animation: slide-down 5s forwards;
+            animation-delay: 1s;
+        }
+
+        @media screen and (prefers-reduced-motion) {
+            #hero {
+                animation: none;
+            }
+        }
+    </style>
+</FlexLayout>
