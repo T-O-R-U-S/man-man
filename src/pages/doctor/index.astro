@@ -4,11 +4,11 @@ import UpNextView from "../../components/up-next-view.svelte";
 import TopBar from '../../components/top-bar.svelte'
 
 // TODO: Re-enable when doctor login is implemented
-// if(!Astro.cookies.has("doctor-jwt")) {
-//     return Astro.redirect("/doctor/login")
-// }
+if(!Astro.cookies.has("doctor-jwt")) {
+    return Astro.redirect("/doctor/login")
+}
 ---
 <Layout title="man.man">
-    <TopBar client:load />
-    <UpNextView client:load class="z-0" />
+    <TopBar client:load/>
+    <UpNextView client:load class="z-0"/>
 </Layout>

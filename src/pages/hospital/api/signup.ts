@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 import {sql} from "../../../../lib/database.ts";
 
 export const POST: APIRoute = async ({request, redirect}) => {
-    const data = await  request.formData();
+    const data = await request.formData();
 
     let hospital_name = data.get("hospital-name")
     let password = data.get("password")
@@ -17,7 +17,7 @@ export const POST: APIRoute = async ({request, redirect}) => {
         email
     });
 
-    if(!validation.success) {
+    if (!validation.success) {
         return new Response(JSON.stringify({message: "Invalid parameters"}), {status: 400})
     }
 
@@ -27,7 +27,7 @@ export const POST: APIRoute = async ({request, redirect}) => {
 
         // We know this is already valid because we verified beforehand.
         // @ts-ignore
-        let encrypted_password =  await bcrypt.hash(validation.data.password, salt);
+        let encrypted_password = await bcrypt.hash(validation.data.password, salt);
 
         // @ts-ignore
         let result = await sql`INSERT INTO hospital(email, password, name) VALUES (${validation.data.email}, ${encrypted_password}, ${validation.data.full_name})`;

@@ -2,7 +2,7 @@ import type {APIRoute} from "astro";
 
 import {sql} from "../../../../../lib/database.ts";
 
-export const POST: APIRoute = async ({ request, params }) => {
+export const POST: APIRoute = async ({request, params}) => {
     let user_uuid = params["verify"]!;
 
     let result = await sql`
@@ -11,5 +11,5 @@ export const POST: APIRoute = async ({ request, params }) => {
         WHERE patient_id = ${user_uuid}
     `;
 
-    return new Response("You've been verified.", {status:200})
+    return new Response("You've been verified.", {status: 200})
 }

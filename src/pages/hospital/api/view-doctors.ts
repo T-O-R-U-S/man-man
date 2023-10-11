@@ -5,7 +5,7 @@ import {sql} from "../../../../lib/database.ts";
 export const GET: APIRoute = async ({request, cookies}) => {
     let hospital_data = verify_jwt(cookies, 'hospital-jwt');
 
-    if(!hospital_data) {
+    if (!hospital_data) {
         return new Response("Forbidden", {status: 403})
     }
 

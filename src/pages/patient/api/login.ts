@@ -5,11 +5,10 @@ import {type APIRoute} from "astro";
 import {Login} from "../../../../lib/types.ts";
 import {sql} from "../../../../lib/database.ts";
 
-import { compare } from 'bcrypt';
-import postgres from "postgres";
+import {compare} from 'bcrypt';
 
-export const POST: APIRoute = async ({request, cookies, redirect }) => {
-    const data = await  request.formData();
+export const POST: APIRoute = async ({request, cookies, redirect}) => {
+    const data = await request.formData();
 
     let password = data.get("password");
     let email = data.get("email");
@@ -19,7 +18,7 @@ export const POST: APIRoute = async ({request, cookies, redirect }) => {
         email
     });
 
-    if(!validation.success) {
+    if (!validation.success) {
         return new Response(JSON.stringify({message: "Incorrect form details"}), {status: 400})
     }
 
@@ -27,11 +26,11 @@ export const POST: APIRoute = async ({request, cookies, redirect }) => {
 
     let result = query.pop();
 
-    if(!result) {
+    if (!result) {
         return new Response(JSON.stringify({message: "No user with that email exists."}), {status: 400})
     }
 
-    if(!result.verified) {
+    if (!result.verified) {
         return redirect("/patient/account-created")
     }
 
@@ -39,7 +38,7 @@ export const POST: APIRoute = async ({request, cookies, redirect }) => {
 
     let password_is_valid = await compare(validation.data.password, encrypted_password);
 
-    if(!password_is_valid) {
+    if (!password_is_valid) {
         return new Response(JSON.stringify({message: "Incorrect password"}), {status: 403})
     }
 
@@ -52,10 +51,10 @@ export const POST: APIRoute = async ({request, cookies, redirect }) => {
 
     let headers = new Headers({
         'Set-Cookie': `patient-jwt=${patient_jwt}; Path=/`,
-        'Location':'/patient'
+        'Location': '/patient'
     })
 
-    return new Response("Successful",{
+    return new Response("Successful", {
         status: 303,
         headers
     })

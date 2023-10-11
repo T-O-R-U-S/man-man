@@ -12,7 +12,7 @@ export const POST: APIRoute = async ({request, redirect, cookies}) => {
 
     let hospital_validation = HospitalInfo.safeParse(data);
 
-    if(!hospital_validation.success) {
+    if (!hospital_validation.success) {
         return new Response("Bad form", {status: http_constants.HTTP_STATUS_BAD_REQUEST})
     }
 
@@ -20,14 +20,14 @@ export const POST: APIRoute = async ({request, redirect, cookies}) => {
 
     let doctor_validation = Signup.safeParse(doctor_info);
 
-    if(!doctor_validation.success) {
+    if (!doctor_validation.success) {
         return new Response("Bad form", {status: http_constants.HTTP_STATUS_BAD_REQUEST})
     }
 
     let encrypted_password: string;
 
     bcrypt.genSalt((err, salt) => {
-        if(err)
+        if (err)
             throw err
 
         // @ts-ignore
