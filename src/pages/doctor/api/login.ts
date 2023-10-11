@@ -4,7 +4,7 @@ import {Login} from "../../../../lib/types.ts";
 import bcrypt from "bcrypt";
 import jsonwebtoken from "jsonwebtoken";
 import 'dotenv/config';
-pnpm 
+
 export const POST: APIRoute = async ({request}) => {
     let form_data = await request.formData();
 

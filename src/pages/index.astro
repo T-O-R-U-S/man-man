@@ -4,7 +4,7 @@ import FlexLayout from "../layouts/FlexLayout.astro";
 <FlexLayout>
     <main class="w-full h-screen bg-blue-600 text-white flex items-center justify-center flex-col">
         <div class="flex flex-wrap">
-            <h1 class="space-grotesk mx-12 my-6 flex-1 min-w-max text-center">I am a...</h1>
+            <h1 class="space-grotesk mx-12 my-6 flex-1 min-w-max text-center" id="i-am">I am a...</h1>
             <nav class="flex flex-col gap-8 space-grotesk my-6 md:mx-12 items-center justify-center flex-1">
                 <a href="/patient-intro"><h1 class="underline underline-offset-4">Patient</h1></a>
                 <a href="/doctor-intro"><h1 class="underline underline-offset-4">Doctor</h1></a>
@@ -12,4 +12,20 @@ import FlexLayout from "../layouts/FlexLayout.astro";
         </div>
         <a href="/hospital-intro"><h3 class="space-grotesk underline text-slate-200 absolute bottom-10 -translate-x-1/2">Hospital</h3></a>
     </main>
+
+    <script>
+        let header = document.getElementById("i-am");
+
+        document.addEventListener('mousemove', (ev) => {
+            let mouse_position = {
+                x: ev.x,
+                y: ev.y
+            }
+
+            mouse_position.x -= window.innerWidth / 2;
+            mouse_position.y -= window.innerHeight / 2;
+
+            header.style.translate = `${(mouse_position.x / window.innerWidth) * 20}% ${(mouse_position.y / window.innerHeight) * 30}%`
+        })
+    </script>
 </FlexLayout>
