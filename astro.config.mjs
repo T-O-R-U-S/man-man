@@ -13,8 +13,8 @@ export default defineConfig({
     adapter: nodejs({
         mode: "standalone"
     }),
-    server: ({ command }) => ({
-        port: command === 'dev' ? 4321: process.env.port,
-        host: '0.0.0.0'
-    })
+    server: {
+        port: parseInt(process.env["PORT"]),
+        host: process.env["HOST"]
+    }
 });
