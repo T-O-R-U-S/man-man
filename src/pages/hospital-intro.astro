@@ -13,7 +13,7 @@ import FlexLayout from "../layouts/FlexLayout.astro";
                 <li class="bg-amber-800 list-none p-12 w-full text-center">My hospital's software does not help patients connect with my doctors and instead acts as a barrier</li>
             </ul>
         </header>
-        <h1 class="text-center py-10 bg-pink-700 max-lg:text-justify px-12 font-black w-full">...and I don't have to work with that anymore.</h1>
+        <h1 class="text-center py-10 bg-pink-700 max-lg:text-justify px-12 font-black w-full expand-out">...and I don't have to work with that anymore.</h1>
         <ul class="text-3xl space-grotesk flex max-lg:flex-wrap list-none w-full">
             <li class="bg-pink-600 list-none p-12 w-full text-justify">Our software is built by experts and made to scale with the future, incorporating bleeding-edge technologies in the medical field like AI to bring you and your patients even closer.</li>
             <li class="bg-pink-500 list-none p-12 w-full">Our software is cross-hospital. Your doctors will already know how to use it, and not only that, patients can even follow your newly-hired doctors from their previous hospital, bringing in fresh, new patients.</li>
@@ -33,14 +33,24 @@ import FlexLayout from "../layouts/FlexLayout.astro";
             }
         }
 
-        #hero {
+        .expand-out {
             animation: slide-down 5s forwards;
             animation-delay: 1s;
+        }
+
+        #hero {
+            @apply expand-out
         }
 
         @media screen and (prefers-reduced-motion) {
             #hero {
                 animation: none;
+                @apply py-36
+            }
+
+            .expand-out {
+                animation: none;
+                @apply py-36;
             }
         }
     </style>
