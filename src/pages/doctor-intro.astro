@@ -13,7 +13,7 @@ import FlexLayout from "../layouts/FlexLayout.astro";
                 <li class="bg-yellow-800 list-none p-12 w-full text-justify">My hospital's software is outdated and slows down my productivity</li>
             </ul>
         </header>
-        <h1 class="text-center py-10 bg-pink-700 max-lg:text-justify px-12 font-black w-full">...and I don't have to deal with that anymore.</h1>
+        <h1 class="text-center py-10 bg-pink-700 max-lg:text-justify px-12 font-black w-full expand-out">...and I don't have to deal with that anymore.</h1>
         <ul class="text-3xl space-grotesk flex max-lg:flex-wrap list-none w-full">
             <li class="bg-pink-600 list-none p-12 w-full text-justify">Our application-style process makes it easier than ever to quickly and accurately inform patients and stop panic, freeing up more space to deal with real emergencies.</li>
             <li class="bg-pink-500 list-none p-12 w-full">Our online process lets you select who to treat, and when to treat them (subject to other patients that your hospital may schedule for you)</li>
@@ -34,14 +34,24 @@ import FlexLayout from "../layouts/FlexLayout.astro";
             }
         }
 
-        #hero {
+        .expand-out {
             animation: slide-down 5s forwards;
             animation-delay: 1s;
+        }
+
+        #hero {
+            @apply expand-out
         }
 
         @media screen and (prefers-reduced-motion) {
             #hero {
                 animation: none;
+                @apply py-36
+            }
+
+            .expand-out {
+                animation: none;
+                @apply py-36;
             }
         }
     </style>
